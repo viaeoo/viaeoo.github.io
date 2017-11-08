@@ -1,0 +1,14 @@
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9;
+
+  @include fixed(0, 0, auto, auto);
+  @include size(100%);
+
+  &[data-show="true"] {
+    display: block;
+  }
+  &[data-show="false"] {
+    display: none;
+  }
+}

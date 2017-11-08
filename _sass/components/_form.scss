@@ -1,0 +1,417 @@
+//
+// mixin: 포커스일때 색상 스타일 
+//
+
+@mixin form-focus() {
+  &:focus {
+    color: $form-focus-color;
+    background-color: $form-focus-bg;
+    border-color: $form-focus-border-color;
+    outline: none;
+  }
+}
+
+//
+// mixin: checkbox & radio 기본 스타일 재 정의
+//
+
+@mixin form-custom($type) {
+  position: relative;
+  display: inline-block;
+  padding-left: $form-check-space-left;
+  margin-right: $form-check-space-right;
+  line-height: $form-line-height;
+  cursor: pointer;
+
+  input[type="#{$type}"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  span {
+    font-size: $font-size-base;
+  }
+
+  &.form-#{$type}-block {
+    display: block;
+    margin-bottom: $form-label-margin-bottom;
+  }
+
+  input[type="#{$type}"]:disabled ~ span {
+    cursor: not-allowed;
+    color: $text-muted;
+  }
+}
+
+//
+// mixin: form 유효성관련 스타일 정의
+//
+
+@mixin form-validation-state($state, $color) {
+
+  // group 스타일
+  .form-group {
+    // has-*, is-* 
+    &.has-#{$state},
+    &.is-#{$state} {
+      color: $color;
+      
+      .form-feedback-text,
+      .invalid-tooltip {
+        display: block;
+      }
+    }
+  }
+
+  // input 스타일
+  .form-input-#{$state},
+  .form-textarea-#{$state}, {
+    padding-right: $form-icon-space;
+    border-color: $color;
+    background-repeat: no-repeat;
+    background-position: center right ($form-icon-space / 4);
+    background-size: $form-icon-bg-size $form-icon-bg-size;
+
+    &:focus {
+      border-color: $color;
+    }
+
+    @if ($state == 'success') {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%235cb85c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E");
+    }
+    @else if ($state == 'warning') {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23f0ad4e' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E");
+    }
+    @else if ($state == 'danger') {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d9534f' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E");
+    }
+  }
+
+  // textarea 예외 스타일
+  .form-textarea-#{$state} {
+    background-position: top ($form-icon-space / 4) right ($form-icon-space / 4);
+  } 
+  
+  // selectbox 스타일
+  .form-select-#{$state} > select{
+    border-color: $color;
+  }
+
+  // file 스타일
+  .form-file-#{$state} {
+    border-color: $color;
+    
+    .form-file-control {
+      &::before {
+        border-color: $color;
+      }
+    }
+  }
+
+  // checkbox & radio 스타일
+  .form-checkbox-#{$state},
+  .form-radio-#{$state} {
+    span {
+      color: $color;
+    }
+  }
+
+}
+
+//
+// 그룹 기본 스타일
+//
+
+fieldset.form-group {
+  padding: 0;
+  border: 0;
+  min-width: 0;
+  // fieldset 기본 margin 제거
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.form-group {
+  margin-bottom: $form-group-margin-bottom;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  > 
+    label:not(.form-checkbox):not(.form-radio),
+    legend {
+    display: block;
+    margin-bottom: $form-label-margin-bottom;
+  }
+}
+
+//
+// form 도움말 스타일
+//
+
+.form-help-text {
+  display: block;
+  margin-top: $form-help-text-margin-top;
+  color: $text-muted;
+  line-height: $form-line-height;
+}
+
+//
+// form 유효성 피드백 스타일
+//
+
+.form-feedback-text {
+  display: none;
+  margin-top: .25rem;
+  font-size: .875rem;
+}
+
+//
+// form 기본 스타일 ( input, textarea, select )
+//
+
+.form-input,
+.form-textarea,
+.form-select select{
+  display: block;
+  width: 100%;
+  padding: $form-padding-y $form-padding-x;
+  font-size: $font-size-base;
+  line-height: $form-line-height;
+  color: $form-color;
+  background-color: $form-bg;
+  background-image: none;
+  border: $form-border-width solid $form-border-color;
+  border-radius: $form-border-radius;
+  box-sizing: border-box;
+
+  // focus
+  @include form-focus();
+
+  // Placeholder
+  &::placeholder {
+    color: $form-color-placeholder;
+    // Firefox의 비정상적인 opacity override
+    // 관련이슈: https://github.com/twbs/bootstrap/pull/11526.
+    opacity: 1;
+  }
+
+  // 사용 불가 및 읽기 전용
+  // HTML5에 따르면 fieldset> legend : first-child 아래의 컨트롤은 fieldset이 비활성화 된 경우 비활성화되지 않습니다.
+  &:disabled,
+  &[readonly] {
+    background-color: $form-disabled-bg;
+    // iOS fix for unreadable disabled content; 
+    // 관련 이슈: https://github.com/twbs/bootstrap/issues/11655.
+    opacity: 1;
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+//
+// form size
+//
+
+.form-input-sm,
+.form-textarea-sm,
+.form-select-sm select {
+  padding: $form-padding-y-sm $form-padding-x-sm;
+  font-size: $font-size-sm;
+}
+.form-input-lg,
+.form-textarea-lg,
+.form-select-lg select {
+  padding: $form-padding-y-lg $form-padding-x-lg;
+  font-size: $font-size-lg;
+}
+
+//
+// select box 예외 스타일
+//
+
+.form-select {
+  position: relative;
+
+  // form select 화살표 
+  &:not(.form-select-multiple)::before,
+  &:not(.form-select-multiple)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: ($form-icon-bg-size / 2);
+    width: 0;
+    height: 0;
+    border-top: ($form-icon-bg-size / 2) solid $gray;
+    border-left: ($form-icon-bg-size / 2) solid transparent;
+    border-right: ($form-icon-bg-size / 2) solid transparent;
+    transform: translateY(-50%);
+    margin-top: ($form-icon-bg-size / 3);
+  }
+  &:not(.form-select-multiple)::after {
+    border-top: 0;
+    border-bottom: ($form-icon-bg-size / 2) solid $gray;
+    margin-top: -($form-icon-bg-size / 3);
+  }
+
+  // form select sm 화살표
+  &.form-select-sm {
+    &:not(.form-select-multiple)::before {
+      border-width: ($form-icon-bg-size / 3);
+      margin-top: ($form-icon-bg-size / 4);
+    }
+    &:not(.form-select-multiple)::after {
+      border-width: ($form-icon-bg-size / 3);
+      margin-top: -($form-icon-bg-size / 4);
+    }
+  }
+
+  select {
+    // Basic caret remove
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    // Hides the default caret in IE10+
+    &::-ms-expand {
+      opacity: 0;
+    }
+
+    &:focus::-ms-value {
+      // <select>가 포커스를받을 때 선택된 옵션 텍스트에 지정된
+      // 파란색 배경 강조 표시에 중첩 된 기본 흰색 텍스트를 표시하지 않습니다.
+      // 관련 이슈: https://github.com/twbs/bootstrap/issues/19398.
+      color: $form-color;
+      background-color: $form-bg;
+    }
+  }
+
+}
+
+//
+// checkbox 스타일
+//
+
+.form-checkbox {
+  
+  @include form-custom('checkbox');
+
+  span:before {
+    content: "";
+    position: absolute;
+    top: (($form-line-height - $form-checkbox-size) / 2);
+    left: 0;
+    width: $form-checkbox-size;
+    height: $form-checkbox-size;
+    border: $form-checkbox-border-width solid $form-border-color;
+    border-radius: 2px;
+    transition-duration: .28s;
+  }
+
+  input[type="checkbox"]:checked ~ span:before {
+    border-color: $brand-primary;
+    background: $brand-primary url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIgogICB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgdmVyc2lvbj0iMS4xIgogICB2aWV3Qm94PSIwIDAgMSAxIgogICBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWluWU1pbiBtZWV0Ij4KICA8cGF0aAogICAgIGQ9Ik0gMC4wNDAzODA1OSwwLjYyNjc3NjcgMC4xNDY0NDY2MSwwLjUyMDcxMDY4IDAuNDI5Mjg5MzIsMC44MDM1NTMzOSAwLjMyMzIyMzMsMC45MDk2MTk0MSB6IE0gMC4yMTcxNTcyOSwwLjgwMzU1MzM5IDAuODUzNTUzMzksMC4xNjcxNTcyOSAwLjk1OTYxOTQxLDAuMjczMjIzMyAwLjMyMzIyMzMsMC45MDk2MTk0MSB6IgogICAgIGlkPSJyZWN0Mzc4MCIKICAgICBzdHlsZT0iZmlsbDojZmZmZmZmO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lIiAvPgo8L3N2Zz4K");
+  }
+}
+
+//
+// radio 스타일
+//
+
+.form-radio {
+
+  @include form-custom('radio');
+
+  span:before {
+    content: "";
+    position: absolute;
+    top: (($form-line-height - $form-radio-size) / 2);
+    left: 0;
+    width: $form-radio-size;
+    height: $form-radio-size;
+    border: $form-radio-border-width solid $form-border-color;
+    border-radius: 50%;
+    transition-duration: .28s;
+  }
+
+  span:after {
+    content: "";
+    position: absolute;
+    top: (($form-line-height - $form-radio-size) / 2) + ($form-radio-size / 4);
+    left: ($form-radio-size / 4);
+    width: ($form-radio-size / 2);
+    height: ($form-radio-size / 2);
+    border-radius: 50%;
+    transition-duration: .28s;
+  }
+
+  input[type="radio"]:checked ~ span:before {
+    border-color: $brand-primary;
+  }
+
+  input[type="radio"]:checked ~ span:after {
+    border-color: $brand-primary;
+    background: $brand-primary;
+  }
+}
+
+//
+// file 스타일
+//
+
+.form-file {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: $font-size-base;
+  padding: $form-padding-y $form-padding-x;
+  border: $form-border-width solid $form-border-color;
+  border-radius: $form-border-radius;
+
+  input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  .form-file-control {
+    display: block;
+    width: 100%;
+    line-height: $form-line-height;
+    color: $form-color;
+    pointer-events: none;
+    user-select: none;
+    background-color: $form-bg;
+
+    &::before {
+      content: attr(data-button);
+      position: absolute;
+      top: -$form-border-width;
+      right: -$form-border-width;
+      bottom: -$form-border-width;
+      padding: $form-padding-y $form-padding-x;
+      line-height: $form-line-height;
+      color: $form-color;
+      border-left: $form-border-width solid $form-border-color;
+      border-radius: 0 $form-border-radius $form-border-radius 0;
+    }
+  }
+}
+
+//
+// form validation 스타일
+//
+
+@include form-validation-state('success', $brand-success);
+@include form-validation-state('warning', $brand-warning);
+@include form-validation-state('danger', $brand-danger);

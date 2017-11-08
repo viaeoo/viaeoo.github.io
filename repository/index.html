@@ -1,0 +1,26 @@
+---
+layout: default
+title: REPOSITORY
+---
+<main class="site-contents">
+  <!-- repository -->
+  <section class="box box-repository-list">
+    <h2 class="box-title"><i class="fa fa-database space-right" aria-hidden="true"></i>REPOSITORY LIST</h2>
+    <ul class="card">
+      {% assign sortedRepository = site.github.public_repositories | sort: "updated_at" | reverse %}
+      {% for repository in sortedRepository %}
+      <li class="card-item">
+        <a href="{{ repository.html_url }}" target="_blank">
+          <h3 class="card-title">{{ repository.name }}</h3>
+          <p class="card-description">{{ repository.description }}</p>
+          <ul class="card-info">
+            <li><i class="fa fa-star space-right-sm" aria-hidden="true"></i>{{ repository.stargazers_count }}</li>
+            <li><i class="fa fa-code-fork space-right-sm" aria-hidden="true"></i>{{ repository.forks_count }}</li>
+            <li><time datatime="{{ repository.updated_at | date: "%Y-%m-%d" }}"><i class="fa fa-clock-o space-right-sm" aria-hidden="true"></i>{{ repository.updated_at | date: "%Y-%m-%d" }}</time></li>
+          </ul>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+</main>

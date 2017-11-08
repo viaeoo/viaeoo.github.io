@@ -1,0 +1,52 @@
+---
+layout: default
+title: HOME
+---
+<main class="site-contents">
+  <!-- post list -->
+  <section class="box box-half box-post-list">
+    <h2 class="box-title"><i class="fa fa-list space-right" aria-hidden="true"></i>POST LIST</h2>
+    {% assign postTotalCount = site.posts | size %}
+    {% if postTotalCount > site.homePostListLimit %}
+    <a href="/blog" class="btn btn-sm btn-secondary btn-more">MORE<i class="fa fa-angle-right space-left-sm" aria-hidden="true"></i></a>
+    {% endif %}
+    <ul class="list">
+      {% for post in site.posts limit: site.homePostListLimit %}
+      <li class="list-item">
+        <a href="{{ post.url }}">
+          <h3 class="list-title">[{{ post.categories }}] {{ post.title }}</h3>
+          <p class="list-description">
+            {{ post.content | strip_html | strip | truncatewords: 50 }}
+          </p>
+          <time class="list-date" datatime="{{ post.date | date: "%Y-%m-%d" }}"><i class="fa fa-clock-o space-right-sm" aria-hidden="true"></i>{{ post.date | date: "%Y-%m-%d" }}</time>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <!-- repository list -->
+  <section class="box box-half box-repository-list">
+    <h2 class="box-title"><i class="fa fa-database space-right" aria-hidden="true"></i>REPOSITORY LIST</h2>
+    {% assign repositoryTotalCount =  site.github.public_repositories | size %}
+    {% if repositoryTotalCount > site.homeRepositoryListLimit %}
+    <a href="/repository" class="btn btn-sm btn-secondary btn-more">MORE<i class="fa fa-angle-right space-left-sm" aria-hidden="true"></i></a>
+    {% endif %}
+    <ul class="card home">
+      {% assign sortedRepository = site.github.public_repositories | sort: "updated_at" | reverse %}
+      {% for repository in sortedRepository limit: site.homeRepositoryListLimit %}
+      <li class="card-item">
+        <a href="{{ repository.html_url }}" target="_blank">
+          <h3 class="card-title">{{ repository.name }}</h3>
+          <p class="card-description">{{ repository.description }}</p>
+          <ul class="card-info">
+            <li><i class="fa fa-star space-right-sm" aria-hidden="true"></i>{{ repository.stargazers_count }}</li>
+            <li><i class="fa fa-code-fork space-right-sm" aria-hidden="true"></i>{{ repository.forks_count }}</li>
+            <li><time datatime="{{ repository.updated_at | date: "%Y-%m-%d" }}"><i class="fa fa-clock-o space-right-sm" aria-hidden="true"></i>{{ repository.updated_at | date: "%Y-%m-%d" }}</time></li>
+          </ul>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+</main>

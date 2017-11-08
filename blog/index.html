@@ -1,0 +1,49 @@
+---
+layout: default
+title: BLOG
+---
+<main class="site-contents">
+  <!-- post -->
+  <section class="box box-quarter3 box-post-list">
+    <h2 class="box-title"><i class="fa fa-list space-right" aria-hidden="true"></i>POST LIST</h2>
+    <!-- post list -->
+    <ul class="list">
+      {% for post in paginator.posts %}
+      <li class="list-item">
+        <a href="{{ post.url }}">
+          <h3 class="list-title">[{{ post.categories }}] {{ post.title }}</h3>
+          <p class="list-description">
+            {{ post.content | strip_html | strip | truncatewords: 50 }}
+          </p>
+          <time class="list-date" datatime="{{ post.date | date: "%Y-%m-%d" }}"><i class="fa fa-clock-o space-right-sm" aria-hidden="true"></i>{{ post.date | date: "%Y-%m-%d" }}</time>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    <!-- post pagination -->
+    {% if paginator.total_pages > 1 %}
+    <div class="pagination">  
+      {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="btn btn-sm btn-secondary btn-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+      {% endif %}
+
+      {% for page in (1..paginator.total_pages) %}
+        {% if page == paginator.page %}
+        <span class="btn btn-sm btn-primary active">{{ page }}</span>
+        {% elsif page == 1 %}
+        <a href="{{ site.baseurl | replace: '//', '/' }}blog" class="btn btn-sm btn-secondary">{{ page }}</a>
+        {% else %}
+        <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}" class="btn btn-sm btn-secondary">{{ page }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="btn btn-sm btn-secondary btn-next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+      {% endif %}    
+    </div>
+    {% endif %}
+  </section>
+
+  {% include category.html %}
+  
+</main>

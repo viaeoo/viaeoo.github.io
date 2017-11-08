@@ -1,0 +1,81 @@
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+# site variables
+title: VIAE
+email: viaeoo@gmail.com
+description: >
+  VIAE's Github Blog 
+author: VIAE
+baseurl: "/"
+url: http://viaeoo.github.io
+
+# list limit variables
+homePostListLimit: 5
+homeRepositoryListLimit: 8
+
+# nav define
+nav: 
+  -
+    href: /
+    title: HOME
+  -
+    href: /about
+    title: ABOUT
+  -
+    href: /blog
+    title: BLOG
+  -
+    href: /repository
+    title: REPOSITORY
+
+# github
+github_username: viaeoo
+github_url: https://github.com/viaeoo
+repository: viaeoo/viaeoo.github.io
+
+#social
+facebook_url: https://facebook.com/allyuteamax
+
+# paginate 
+paginate: 10
+paginate_path: "/blog/page:num/"
+
+# etc build set
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n"
+incremental: false
+encoding: "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+# markdown:: kramdown
+markdown: kramdown
+kramdown: 
+  input: GFM
+  auto_ids: false
+  footnote_nr: 1
+  entity_output: as_char
+  hard_wrap: false
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
+# gems pulgins
+gems:
+  - jekyll-github-metadata
+  - jekyll-paginate
+  - jekyll-gist
+  - jekyll-babel
+  - rouge
+
+# babel
+babel_js_extensions: 'js, es6, babel, jsx'
+
+# sass
+sass:
+  sass_dir: _sass
+  style: compressed 

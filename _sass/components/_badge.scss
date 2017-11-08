@@ -1,0 +1,140 @@
+//
+// mixin: 기본 배지 스타일
+//
+
+@mixin badge-variant($color) {
+  background-color: $color;
+
+  &[href] {
+    &:focus,
+    &:hover {
+      background-color: darken($color, 10%);
+    }
+  }
+}
+@mixin badge-data-variant($color){
+  &:after{
+    background-color: $color;
+  }
+}
+
+//
+// 기본 스타일
+//
+
+.badge {
+  display: inline-block;
+  padding: $badge-padding-y $badge-padding-x;
+  font-size: $badge-font-size;
+  font-weight: $badge-font-weight;
+  line-height: 1;
+  color: $badge-color;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border: $badge-border-width solid transparent;
+  border-radius: $badge-pill-border-radius;
+
+  // 빈 객체일경우 display none
+  &:empty {
+    display: none;
+  }
+}
+
+//
+// data-badge 스타일
+//
+
+[data-badge] {
+  position: relative;
+
+  &:after {
+    content: attr(data-badge);
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $badge-color;
+    font-size: $badge-data-font-size;
+    border-radius: $badge-pill-border-radius;
+    padding: $badge-padding-y $badge-padding-x;
+    transform: translate(100%, -50%);
+  }
+}
+
+//
+// 버튼 안에 배지 위치 조정
+//
+
+.btn .badge {
+  position: relative;
+  top: -1px;
+}
+
+//
+// a태그 배지 포커스, 오버시 스타일
+//
+
+a.badge {
+  &:focus,
+  &:hover {
+    color: $badge-link-hover-color;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+//
+// 캡슐 스타일
+//
+
+.badge-pill {
+  padding-right: $badge-pill-padding-x;
+  padding-left: $badge-pill-padding-x;
+  border-radius: $badge-pill-border-radius;
+}
+
+//
+// badge 종류별 스타일 
+// 
+
+.badge-default {
+  @include badge-variant($badge-default-bg);
+}
+.badge-primary {
+  @include badge-variant($badge-primary-bg);
+}
+.badge-success {
+  @include badge-variant($badge-success-bg);
+}
+.badge-info {
+  @include badge-variant($badge-info-bg);
+}
+.badge-warning {
+  @include badge-variant($badge-warning-bg);
+}
+.badge-danger {
+  @include badge-variant($badge-danger-bg);
+}
+
+// 
+// badge data 종류별 스타일 
+//
+
+.badge-data-default{
+  @include badge-data-variant($badge-default-bg)
+}
+.badge-data-primary{
+  @include badge-data-variant($badge-primary-bg);
+}
+.badge-data-success {
+  @include badge-data-variant($badge-success-bg);
+}
+.badge-data-info {
+  @include badge-data-variant($badge-info-bg);
+}
+.badge-data-warning {
+  @include badge-data-variant($badge-warning-bg);
+}
+.badge-data-danger {
+  @include badge-data-variant($badge-danger-bg);
+}

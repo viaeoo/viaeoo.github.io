@@ -1,0 +1,16 @@
+<!-- category -->
+<section class="box box-quarter box-category">
+    <!-- responsive button -->
+    <button type="button" class="btn btn-sm btn-secondary btn-category js-btn-category-toggle">CATEGRORY<i class="fa fa-caret-down space-left" aria-hidden="true"></i></button>
+    <h2 class="box-title"><i class="fa fa-folder space-right" aria-hidden="true"></i>CATEGRORY</h2>
+    <ul class="list list-table js-category-list">
+      {% for category in site.categories %}
+      <li class="list-item">
+          <a href="/search/?sort=category&amp;value={{ category | first }}">
+            <strong class="category"><i class="fa fa-caret-right space-right" aria-hidden="true"></i>{{ category | first }}</strong>
+            <span class="count">({{ category[1].size }})</span>
+          </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>

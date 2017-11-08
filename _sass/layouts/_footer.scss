@@ -1,0 +1,10 @@
+.site-footer {
+  text-align: center;
+  font-size: 0.8rem;
+
+  @include clear;
+
+  .copyright {
+    padding: 20px 0;
+  }
+}

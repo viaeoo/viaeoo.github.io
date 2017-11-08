@@ -1,0 +1,102 @@
+//
+// 각 섹션(문서의 레이아웃)에서의 clear정의
+//
+
+@mixin clear {
+	&::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+
+//
+// object의 size 정의
+// 파라미터로 width, height 값이 필요하며, height는 생략시 width값과 동일
+//
+
+@mixin size($width, $height: $width, $lineHeight: false) {
+	width: $width;
+	height: $height;
+	
+	// line-height 설정이 true일 경우 line-height값 height 값으로 설정
+	@if ($lineHeight){
+		line-height: $height;
+	}
+}
+
+//
+// border 정의
+// 파라미터 border width, border color, radius
+//
+
+@mixin border($width, $color, $radius: 0) {
+	border: $width solid $color;
+	border-radius: $radius;
+}
+
+//
+// object의 absolute 좌표를 정의
+// 파라미터는 시계방향이며, 파라미터를 auto로 설정시 유효하지 않는 속성 값
+// e.g) absolute(50%,auto,auto,50%);
+// 
+
+@mixin absolute($top, $right, $bottom, $left) {
+	position: absolute;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+//
+// object의 fixed 지정
+//
+
+@mixin fixed($top, $right, $bottom, $left) {
+	position: fixed;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+//
+// 텍스트 생략
+//
+
+@mixin textOverflow {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+//
+// 부모 elements안에서 해당 object의 수직, 수평 가운데정렬 
+// 
+
+@mixin middle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+//
+// Responsive Web 을 위한 Breakpoint
+//
+
+@mixin breakpoint($point) {
+  @if $point == desktop {
+		@media (min-width: 1024px) { @content; }
+	}
+  @else if $point == tablet {
+		@media (max-width: 1023px) { @content; }
+  }
+  @else if $point == mobile-wide {
+		@media (max-width: 767px) { @content; }
+  }
+  @else if $point == mobile {
+     @media (max-width: 639px) { @content; }
+  }
+}

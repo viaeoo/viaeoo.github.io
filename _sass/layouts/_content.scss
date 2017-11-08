@@ -1,0 +1,10 @@
+.site-contents {
+  position: relative;
+  max-width: 1000px;
+  margin: 100px auto 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @include clear;
+}

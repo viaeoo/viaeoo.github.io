@@ -1,0 +1,36 @@
+---
+layout: default
+title: SEARCH
+---
+<main class="site-contents">
+  <!-- post -->
+  <section class="box box-quarter3 box-post-list">
+    <h2 class="box-title"><i class="fa fa-sort space-right" aria-hidden="true"></i>SEARCH LIST</h2>
+    <!-- post list -->
+    <ul class="list js-search-list">
+      <!-- search list -->
+    </ul>
+  </section>
+
+  {% include category.html %}
+  
+  <!-- search js -->
+  <script>
+    window.store = {
+      {% assign posts = site.posts | sort: "updated_at" %}
+      {% for post in posts %}
+        "{{ post.id | slugify | strip }}": {
+          "title": "{{ post.title | xml_escape }}",
+          "category": "{{ post.categories.first }}",
+          "content": "{{ post.content | strip_html | strip_newlines | escape | truncatewords: 50 }}",
+          "date": "{{ post.date | date: '%Y-%m-%d' }}",
+          "tag": {{ post.tags | strip }},
+          "url": "{{ post.url | xml_escape }}"
+        }
+        {% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    };
+  </script>
+  <script src="/assets/js/vendors/lunr.min.js" charset="utf-8"></script>
+  <script src="/assets/js/vendors/search.js" charset="utf-8"></script>
+</main>

@@ -1,0 +1,314 @@
+//
+// mixin: 기본 버튼 스타일
+//
+
+@mixin button-variant($color, $background, $border) {
+  $active-background: darken($background, 10%);
+  $active-border: darken($border, 12%);
+
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+	box-shadow: $btn-box-shadow;
+
+	&:hover { 
+		color: $color;
+    background-color: $active-background;
+    border-color: $active-border;
+	}
+  &:focus,
+  &.focus {
+    box-shadow: 0 0 0 2px rgba($border, .5);
+  }
+
+  // disabled 스타일
+  &.disabled,
+  &:disabled {
+    background-color: $background;
+    border-color: $border;
+  }
+
+  &:active,
+  &.active,
+  .show > &.dropdown-toggle {
+    color: $color;
+    background-color: $active-background;
+    background-image: none;
+    border-color: $active-border;
+		box-shadow: $btn-active-box-shadow;
+  }
+
+  .badge {
+    color: $background;
+    background-color: $color;
+  }
+}
+
+//
+// 배경색이 없는 outline 버튼 스타일
+//
+
+@mixin button-outline-variant($color, $color-hover: #fff) {
+  color: $color;
+  background-image: none;
+  background-color: transparent;
+  border-color: $color;
+
+	&:hover { 
+    color: $color-hover;
+    background-color: $color;
+    border-color: $color;
+
+    .badge{
+      color: $color;
+      background-color: $color-hover;
+    }
+	}
+  &:focus,
+  &.focus {
+    box-shadow: 0 0 0 2px rgba($color, .5);
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $color;
+    background-color: transparent;
+  }
+
+  &:active,
+  &.active,
+  .show > &.dropdown-toggle {
+    color: $color-hover;
+    background-color: $color;
+    border-color: $color;
+  }
+
+  .badge {
+    color: $color;
+    border-color: $color;
+  }
+}
+
+// 
+// mixin: button size - 파라미터 상/하 padding, 좌/우 padding, 기본 font size, button border, border radius
+//
+
+@mixin button-size($padding-y, $padding-x, $btn-font-size-base, $btn-border-radius) {
+  padding: $padding-y $padding-x;
+  font-size: $btn-font-size-base;
+	border-radius: $btn-border-radius;
+}
+
+//
+// 기본 스타일
+//
+
+.btn {
+  display: inline-block;
+  font-weight: $btn-font-weight;
+  line-height: $btn-line-height;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: $btn-border-width solid transparent;
+  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size-base, $btn-border-radius);
+  transition: $btn-transition;
+	
+	&:focus,
+	&:hover {
+		text-decoration: none;
+	}
+  &:focus,
+  &.focus {
+    outline: 0;
+    box-shadow: $btn-focus-box-shadow;
+  }
+
+  &.disabled,
+  &:disabled {
+    cursor: $btn-cursor-disabled;
+    opacity: .65;
+		box-shadow:none;
+  }
+
+  &:active,
+  &.active {
+    background-image: none;
+		box-shadow: $btn-focus-box-shadow, $btn-active-box-shadow;
+  }
+}
+
+// `<a> '요소에 대한 클릭 차단
+a.btn.disabled,
+fieldset[disabled] a.btn {
+  pointer-events: none;
+}
+
+//
+// 버튼 종류별 스타일
+//
+
+.btn-primary {
+  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+}
+.btn-secondary {
+  @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+}
+.btn-info {
+  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
+}
+.btn-success {
+  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
+}
+.btn-warning {
+  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+}
+.btn-danger {
+  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+}
+
+//
+// outline 버튼 종류별 스타일
+//
+
+.btn-outline-primary {
+  @include button-outline-variant($btn-primary-bg);
+}
+.btn-outline-secondary {
+  @include button-outline-variant($btn-secondary-color);
+}
+.btn-outline-info {
+  @include button-outline-variant($btn-info-bg);
+}
+.btn-outline-success {
+  @include button-outline-variant($btn-success-bg);
+}
+.btn-outline-warning {
+  @include button-outline-variant($btn-warning-bg);
+}
+.btn-outline-danger {
+  @include button-outline-variant($btn-danger-bg);
+}
+
+//
+// Link buttons
+//
+
+.btn-link {
+  font-weight: $btn-font-weight;
+  color: $link-color;
+  border-radius: 0;
+
+  &,
+  &:active,
+  &.active,
+  &:disabled {
+    background-color: transparent;
+		box-shadow: none;
+  }
+  &,
+  &:focus,
+  &:active {
+    border-color: transparent;
+  }
+	&:hover { 
+		border-color: transparent;
+	 }
+	&:focus,
+	&:hover {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+    background-color: transparent;
+	}
+  &:disabled {
+    color: $btn-link-disabled-color;
+		&:focus,
+		&:hover {
+			text-decoration: none;
+		}
+  }
+}
+
+
+//
+// Button 사이즈
+//
+
+.btn-lg {
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-border-radius-lg);
+}
+.btn-sm {
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-border-radius-sm);
+}
+
+
+//
+// Block button
+//
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+//
+// 블록 버튼 수직으로 배열 시 margin-top 스타일
+//
+
+.btn-block + .btn-block {
+  margin-top: $btn-block-spacing-y;
+}
+
+//
+// 특이성 무시
+//
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.btn-block {
+    width: 100%;
+  }
+}
+
+//
+// btn float 설정
+//
+
+.btn-float-left {
+  float: left;
+}
+
+.btn-float-right {
+  float: right;
+}
+
+// 
+// 버튼 별 Style 지정
+//
+
+.btn-category {
+
+  @include breakpoint(desktop) {
+    display: none;
+  }
+}
+
+.btn-controls {
+  font-size: 1.2rem;
+  color: $white;
+  transform: translateY(-50%);
+
+  @include absolute(50%, 20px, auto, auto);
+
+  @include breakpoint(desktop) {
+    display: none;
+  }
+  @include breakpoint(tablet) {
+    display: none;
+  }
+  @include breakpoint(mobile-wide) {
+    display: block;
+  }
+}

@@ -1,0 +1,170 @@
+.post {
+  position: relative;
+  color: $black;
+  padding: 40px 50px;
+  margin: 0 0 20px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05), 0 5px 9px rgba(0,0,0,0.1);
+  overflow: hidden;
+
+  @include border(1px, $gray-lighter, 5px);
+  @include clear;
+
+  @include breakpoint(tablet) {
+    padding: 40px 40px;
+  }
+  @include breakpoint(mobile-wide) {
+    padding: 40px 30px;
+  }
+  @include breakpoint(mobile) {
+    padding: 40px 20px;
+  }
+
+ .post-header {
+   padding-bottom: 10px;
+   border-bottom: 1px solid $gray-lighter;
+ }
+
+ .post-title {
+   font-size: 2rem;
+   line-height: 2.5rem;
+   padding-bottom: 10px;
+ }
+
+ .post-tag,
+ .post-date {
+   font-size: 0.8rem;
+   line-height: 1.3rem;
+   padding-bottom: 5px;
+   color: $gray-light;
+   display: block;
+
+   .tag{
+     padding-right: 5px;
+
+     &:before{
+       content: '#';
+     }
+   }
+ }
+ .post-category {
+   font-size: 1rem;
+   padding: 5px 20px;
+   background: $black;   
+   color: $white;
+   border-radius: 0 5px 0 5px;
+   
+   @include absolute(0, 0, auto, auto);
+   
+ }
+}
+.post-nav {
+  padding: 20px 0 50px;
+
+  @include clear;
+  
+  @include breakpoint(mobile) {
+    .btn {
+      max-width: calc(50% - 40px);
+      
+      @include textOverflow;
+    }
+    .btn:last-child {
+      direction: rtl;
+      strong {
+        display: inline-block;
+        margin-right: 20px;
+      }
+      .fa {
+        position: absolute;
+        right: 1rem;
+      }
+    }
+  }
+}
+
+.post-contents {
+  word-break: break-all;
+  padding: 20px 0;
+  font-size: 1rem;
+
+   h1 {
+     font-size: 1.8em;
+     padding: 0.95em 0 0.475em;
+   }
+   h2 {
+     font-size: 1.7em;
+     padding: 0.9em 0 0.45em;
+   }
+   h3 {
+     font-size: 1.5em;
+     padding: 0.8em 0 0.4em;
+   }
+   h4 {
+     font-size: 1.3em;
+     padding: 0.8em 0 0.4em;
+   }
+   h5 {
+     font-size: 1.1em;
+     padding: 0.6em 0 0.3em;
+   }
+   h6 {
+     font-size: 1em;
+     padding: 0.6em 0 0.3em;
+   }
+
+   p {
+     font-size: 0.95em;
+     line-height: 1.5em;
+     padding: 0.7em 0;
+   }
+
+   a {
+     color: $brand-primary;
+   }
+
+   ul,
+   ol,
+   dl {
+     font-size: 0.95em;
+     line-height: 1.5em;
+     padding: 0.7em 0 0.7em 0.9em;
+   }
+   ol {
+     list-style: decimal;
+     counter-reset: section;
+   }
+
+   li {
+     position: relative;
+     padding-left: 15px;
+   }
+   ul > li {
+     &:before{
+       content: '';
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 0.3em;
+       height: 0.3em;
+       border-radius: 50%;
+       background: $black;
+       transform: translateY(0.5em);
+     }
+   }
+   ol > li {
+     &:before{
+       content: counter(section)'.';
+       counter-increment: section;
+       position: absolute;
+       top: 0;
+       left: 0;
+     }
+     &:nth-child(n + 10):before{
+       content: counter(section);
+     }
+   }
+
+   img {
+     max-width: 100%;
+   }
+ }
