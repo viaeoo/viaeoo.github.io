@@ -15,7 +15,11 @@ tag: ['Pastime', '핸드폰번호 가리기']
 #### 풀이
 
 ```javascript
-
+function hide_numbers(s){
+  const result = new Array(s.length - 3).join('*') + s.substr(s.length - 4, 4);
+  
+  return result;
+}
 ```
 ```javascript
 // 실행을 위한 테스트코드
