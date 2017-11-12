@@ -11,7 +11,7 @@ description: >
   VIAE's Github Blog 
 author: VIAE
 baseurl: "/"
-url: http://viaeoo.github.io
+url: https://viaeoo.github.io
 
 # list limit variables
 homePostListLimit: 5
@@ -65,7 +65,7 @@ kramdown:
   enable_coderay: false
 
 # gems pulgins
-gems:
+plugins:
   - jekyll-github-metadata
   - jekyll-paginate
   - jekyll-gist
