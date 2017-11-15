@@ -8,10 +8,10 @@ tag: ['D3', 'D3.js', 'Data Binding']
 
 #### 들어가기
 
-- D3.js에서 데이터 조인은 datum, data가 있다.
+- D3.js에서 데이터 바인딩은 datum, data가 있다.
 - 데이터 바인딩은 자신의 키 값과 같은 키 값을 가지는 문서요소에 할당되는 것이다.
 
-#### D3(Data Drivened Document)
+#### D3 Data Binding
 
 D3에서 데이터바인딩은 셀렉션(d3_selection)의 최하단의 요소들의 __data__속성에 할당된다. 즉, 어떤 문서요소가 __data__ 속성을 가지고 있지 않으면, 그 문서요소에는 D3에 의해 바인딩 된 데이터가 정의되어 있지 않은 것이라 할 수 있다. 
 
