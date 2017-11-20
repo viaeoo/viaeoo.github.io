@@ -1,26 +1,25 @@
 .box {
+  width: 100%;
   position: relative;
   box-sizing: border-box;
-  margin: 0 5px;
 
   .box-title {
     font-size: 1.2rem;
     color: $black;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.8rem;
   }
 
   .box-text {
     font-size: 1rem;
     line-height: 1.3rem;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
   }
 
   .btn-more {
     @include absolute(0, 0, auto, auto);
   }
 
-  @include size(calc(100% - 10px), auto);
   @include clear;
 
   @include breakpoint(tablet) {

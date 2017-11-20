@@ -14,8 +14,7 @@ baseurl: "/"
 url: https://viaeoo.github.io
 
 # list limit variables
-homePostListLimit: 5
-homeRepositoryListLimit: 8
+homePostListLimit: 10
 
 # nav define
 nav: 
@@ -31,6 +30,9 @@ nav:
   -
     href: /repository
     title: REPOSITORY
+  - 
+    href: /portfolio
+    title: PORTFOLIO
 
 # github
 github_username: viaeoo

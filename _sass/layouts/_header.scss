@@ -1,9 +1,9 @@
 .site-header {
   box-sizing: border-box;
-  background-color: $brand-primary;
-  color: $white;
-  padding: 0 50px;
-  box-shadow: 0 3px 3px $gray-light;
+  background-color: $white;
+  color: $gray-dark;
+  padding: .5rem 2rem;
+  box-shadow: 1px -2px 10px $gray-light;
   
   @include absolute(0, auto, auto, 0);
   @include size(100%, auto);
@@ -16,8 +16,8 @@
   .site-title {
     float: left;
     font-size: 1.5rem;
-    
-    @include size(10%, 50px, true);
+    width: 10%;
+    line-height: 3rem;
 
     @include breakpoint(mobile-wide) {
       width: 100%;
@@ -27,8 +27,9 @@
   .site-controls {
     float: right;
     text-align: right;
-    font-weight: bold;
-    font-size: 0; // display-inline 여백 제거
+    width: 90%;
+    font-weight: 600;
+    line-height: 3rem;
     
     .none {
       display: none;
@@ -38,11 +39,8 @@
       display: none;
     }
 
-    @include size(90%, 50px, true);
-
     @include breakpoint(mobile-wide) {
       box-sizing: border-box;
-      padding: 30px 0;
       background: $white;
       float: none;
       text-align: left;
@@ -55,6 +53,7 @@
       .btn-close {
         font-size: $font-size-lg;
         display: block;
+        color: $white;
         @include absolute(10px, 10px, auto, auto);
       }
 
@@ -68,15 +67,30 @@
   }
 
   .site-search {
-    position: relative;
     display: inline-block;
-    font-size: 0.9rem;    
+    position: relative;
+    font-size: 0.9rem;
+    font: 0/0 a;
 
-    .form-select,
     .form-input {
       display: inline-block;
+      min-width: 200px;
       width: auto;
-      min-width: 90px;
+      border-radius: 0;
+      border: 0;
+      border-bottom:1px solid $gray-dark;
+    }
+
+    .form-select {
+      display: inline-block;
+      min-width: 100px;      
+
+      > select {
+        color: $brand-primary;
+        border-radius: 0;
+        border: 0;
+        border-bottom:1px solid $gray-dark;
+      }
     }
 
     .btn-search {
@@ -87,16 +101,17 @@
 
     @include breakpoint(mobile-wide) {
       display: block;
-      padding: 30px 20px;
-      border-bottom: 2px solid $gray-lighter;
+      background: $black;
+      padding: 60px 10px 30px;
 
-      .form-select,
       .form-input {
         display: block;
-        width: 100%;
-      }
-      .form-input {
         margin-top: 10px;
+        min-width: 100%;
+      }
+
+      .form-select {
+        min-width: 100%; 
       }
 
       .btn-search {
@@ -109,7 +124,7 @@
   .site-nav {
     display: inline-block;
     font-size: 0.9rem;
-
+    
     li {
       display: inline-block;
       padding: 0 10px;
@@ -121,11 +136,10 @@
 
     @include breakpoint(mobile-wide) {
       display: block;
-      padding: 20px;
 
       li {
         display: block;
-        padding: 0;
+        padding: 0 1rem;
         line-height: 1;
         color: $black;
         border-bottom: 1px solid $gray-lighter;

@@ -28,6 +28,10 @@
    font-size: 2rem;
    line-height: 2.5rem;
    padding-bottom: 10px;
+
+   @include breakpoint(mobile-wide) {
+     font-size: 1.5rem;
+   }
  }
 
  .post-tag,
@@ -63,12 +67,17 @@
   @include clear;
   
   @include breakpoint(mobile) {
+    & {
+      padding: 10px 0 20px;
+    }
+
     .btn {
+      font-size: 0.7rem;
       max-width: calc(50% - 40px);
       
       @include textOverflow;
     }
-    .btn:last-child {
+    .btn:not(:only-child):last-child {
       direction: rtl;
       strong {
         display: inline-block;

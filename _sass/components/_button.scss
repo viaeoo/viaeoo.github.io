@@ -297,7 +297,8 @@ input[type="button"] {
 
 .btn-controls {
   font-size: 1.2rem;
-  color: $white;
+  line-height: 1;
+  color: $brand-primary;
   transform: translateY(-50%);
 
   @include absolute(50%, 20px, auto, auto);

@@ -29,8 +29,13 @@
 
   .list-title {
     font-size: 1rem;
+    font-weight: 600;
     
     @include textOverflow;
+
+    > .color-primary {
+      color: $brand-primary;
+    }
   }
 
   .list-text {
@@ -84,10 +89,16 @@
     &:last-child{
       border-bottom-width: 1px;
     }
+
   }
 
   .list-title{
     float: left;
+
+    @include textOverflow();
+    @include breakpoint(mobile) {
+      font-size: 0.8rem;
+    }
   }
 
   .list-date{

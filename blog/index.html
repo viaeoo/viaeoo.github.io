@@ -11,7 +11,7 @@ title: BLOG
       {% for post in paginator.posts %}
       <li class="list-item">
         <a href="{{ post.url }}">
-          <h3 class="list-title">[{{ post.categories }}] {{ post.title }}</h3>
+          <h3 class="list-title"><span class="color-primary">[{{ post.categories }}]</span> {{ post.title }}</h3>
           <p class="list-description">
             {{ post.content | strip_html | strip | truncatewords: 50 }}
           </p>

@@ -13,7 +13,7 @@
         appendString += 
           '<li class="list-item">' +
             '<a href="' + item.url + '">' +
-              '<h3 class="list-title">[' + item.category + ']' + item.title + '</h3>' +
+              '<h3 class="list-title"><span class="color-primary">[' + item.category + ']</span> ' + item.title + '</h3>' +
               '<p class="list-description">' + item.content + '</p>' +
               '<time class="list-date" datatime="' + item.date + '"><i class="fa fa-clock-o space-right-sm" aria-hidden="true"></i>' + item.date + '</time>' +
             '</a>' +
