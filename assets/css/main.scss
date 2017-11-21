@@ -13,12 +13,6 @@
 @import 'base/common';
 
 
-// import layouts scss
-@import 'layouts/header';
-@import 'layouts/content';
-@import 'layouts/footer';
-
-
 //import components scss
 @import 'components/space';
 @import 'components/box';
@@ -30,6 +24,13 @@
 @import 'components/modal';
 @import 'components/form';
 @import 'components/badge';
+
+
+// import layouts scss
+@import 'layouts/header';
+@import 'layouts/search';
+@import 'layouts/content';
+@import 'layouts/footer';
 
 
 //import venders scss

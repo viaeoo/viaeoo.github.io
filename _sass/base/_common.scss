@@ -1,16 +1,24 @@
 /*-- common --*/
+
+* {
+	box-sizing: border-box;
+}
+
 body {
 	font-family: $font-family;
 }
+
 a {
 	color: inherit;
 	text-decoration: none;
 }
+
 button {
 	padding: 0;
 	border: 0;
 	background-color: transparent;
 }
+
 h1,
 h2,
 h3,
@@ -19,13 +27,19 @@ h5,
 h6 {
 	margin: 0;
 }
+
 p {
 	margin: 0;
 }
+
 ul,
 ol,
 li {
 	padding:0;
 	margin:0;
 	list-style: none;
+}
+
+.none {
+	display: none;
 }

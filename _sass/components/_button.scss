@@ -283,33 +283,3 @@ input[type="button"] {
 .btn-float-right {
   float: right;
 }
-
-// 
-// 버튼 별 Style 지정
-//
-
-.btn-category {
-
-  @include breakpoint(desktop) {
-    display: none;
-  }
-}
-
-.btn-controls {
-  font-size: 1.2rem;
-  line-height: 1;
-  color: $brand-primary;
-  transform: translateY(-50%);
-
-  @include absolute(50%, 20px, auto, auto);
-
-  @include breakpoint(desktop) {
-    display: none;
-  }
-  @include breakpoint(tablet) {
-    display: none;
-  }
-  @include breakpoint(mobile-wide) {
-    display: block;
-  }
-}
