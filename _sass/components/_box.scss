@@ -1,7 +1,9 @@
+//
+// common box
+//
+
 .box {
-  width: 100%;
   position: relative;
-  box-sizing: border-box;
 
   .box-title {
     font-size: 1.2rem;
@@ -19,53 +21,21 @@
   .btn-more {
     @include absolute(0, 0, auto, auto);
   }
-
-  @include clear;
-
-  @include breakpoint(tablet) {
-    margin: 0 20px;
-    @include size(calc(100% - 40px), auto);
-  }
 }
 
-.box-half{
-  @include size(calc(50% - 10px), auto);
-  
-  @include breakpoint(tablet) {
-    
-    @include size(calc(50% - 25px), auto);
-
-    &:nth-child(odd) {
-      margin: 0 5px 0 20px;
-    }
-    &:nth-child(even) {
-      margin: 0 20px 0 5px;
-    }
-  }
-
-  @include breakpoint(mobile) {
-    
-    @include size(calc(100% - 10px), auto);
-
-    &:nth-child(odd),
-    &:nth-child(even) {
-      margin: 0 20px;
-    }
-  }
-}
-.box-quarter {
-  @include size(calc(25% - 10px), auto);
-}
-.box-quarter3 {
-  @include size(calc(75% - 10px), auto);
-  
-  @include breakpoint(tablet) {
-    @include size(100%, auto);
-  }
+// post box
+.box-post {
+  flex: 1;
 }
 
-// braekpoint에 따른 box style
+// category box
 .box-category {
+  width: 200px;
+  margin-left: 10px;
+
+  .btn-category {
+    display: none;
+  }
   
   // tablet
   @include breakpoint(tablet) {

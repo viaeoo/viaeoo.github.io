@@ -67,12 +67,12 @@ console.log(myVarVariable)
 
 변수가 어떻게 생성되며 호이스팅은 어떻게 이루어지는지 좀더 자세히 살펴보면 다음과 같다.
 
-Javascript에서 변수는 3단계에 걸쳐 생성된다. 
-**선언 단계(Declaration phase)**
-- 변수 객체(Variable Object)에 변수를 등록한다. 이 변수 객체는 스코프가 참조하는 대상이 된다.
-**초기화 단계(Initialization phase)**
-변수 객체(Variable Object)에 등록된 변수를 메모리에 할당한다. 이 단계에서 변수는 undefined로 초기화된다.
-**할당 단계(Assignment phase)**
+Javascript에서 변수는 3단계에 걸쳐 생성된다.
+- **선언 단계(Declaration phase)**
+변수 객체(Variable Object)에 변수를 등록한다. 이 변수 객체는 스코프가 참조하는 대상이 된다.  
+- **초기화 단계(Initialization phase)**
+변수 객체(Variable Object)에 등록된 변수를 메모리에 할당한다. 이 단계에서 변수는 undefined로 초기화된다.  
+- **할당 단계(Assignment phase)**
 undefined로 초기화된 변수에 실제값을 할당한다.
 
 var 키워드로 선언된 변수는 선언 단계와 초기화 단계가 한번에 이루어진다. 즉, 스코프에 변수가 등록되고 변수는 메모리에 공간을 확보한 후 undefined로 초기화된다.
@@ -100,13 +100,13 @@ console.log(myVarVariable)
 
 이렇게, 최상단으로 호이스팅은 되지만 Reference를 출력하는 것을 일시적 사각 지대 (Temporal dead zone)라 한다. let 키워드로 생성된 변수는 다음과 같은 단계를 거친다.
 
-**선언 단계(Declaration phase)**
-- 변수 객체(Variable Object)에 변수를 등록한다. 이 변수 객체는 스코프가 참조하는 대상이 된다.
-**일시적 사각지대(TDZ)**
-- 선언은 되었지만, 초기화는 되지 않은 상태: referenceError
-**초기화 단계(Initialization phase)**
+- **선언 단계(Declaration phase)**
+변수 객체(Variable Object)에 변수를 등록한다. 이 변수 객체는 스코프가 참조하는 대상이 된다.
+- **일시적 사각지대(TDZ)**
+선언은 되었지만, 초기화는 되지 않은 상태: referenceError
+- **초기화 단계(Initialization phase)**
 변수 객체(Variable Object)에 등록된 변수를 메모리에 할당한다. 이 단계에서 변수는 undefined로 초기화된다.
-**할당 단계(Assignment phase)**
+- **할당 단계(Assignment phase)**
 undefined로 초기화된 변수에 실제값을 할당한다.
 
 ##### let vs const
