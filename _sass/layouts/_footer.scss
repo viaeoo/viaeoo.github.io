@@ -2,7 +2,7 @@
   text-align: center;
   font-size: 0.8rem;
 
-  @include clear;
+  @include clearfix();
 
   .copyright {
     padding: 0.6rem 0 1rem;

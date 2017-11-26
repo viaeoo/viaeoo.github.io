@@ -3,9 +3,10 @@
 @charset 'utf-8';
 
 // import utils scss
+@import 'utils/functions';
+@import 'utils/breakpoint';
 @import 'utils/variables';
 @import 'utils/mixins';
-@import 'utils/functions';
 
 
 // import base scss
@@ -14,7 +15,8 @@
 
 
 //import components scss
-@import 'components/space';
+@import 'components/text';
+
 @import 'components/box';
 @import 'components/list';
 @import 'components/pagination';

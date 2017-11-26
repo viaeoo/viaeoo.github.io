@@ -1,30 +1,64 @@
-//
-// 배경색상에 대한 대조(contrast) 글꼴 컬러를 설정하는 사용자 정의 함수
-//
-
-@function contrast-text($bgcolor, $amount: 50%) {
-    $text-color: null;
-
-    // 유효성 검사
-    @if type-of($bgcolor) != color {
-        @warn "전달받은 인자의 데이터 형이 잘못되었습니다. color 형이 필요합니다.";
-        @debug "전달 받은 인자 $bgcolor 값은 #{type-of($bgcolor)} 입니다.";
+// Ascending
+// Used to evaluate Sass maps like our grid breakpoints.
+@mixin _assert-ascending($map, $map-name) {
+  $prev-key: null;
+  $prev-num: null;
+  @each $key, $num in $map {
+    @if $prev-num == null {
+      // Do nothing
+    } @else if not comparable($prev-num, $num) {
+      @warn "Potentially invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} whose unit makes it incomparable to #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+    } @else if $prev-num >= $num {
+      @warn "Invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num}, the value of the previous key '#{$prev-key}' !";
     }
-
-    @if lightness($bgcolor) > 50% {
-        $text-color: darken($bgcolor, $amount);
-    }
-    @else {
-        $text-color: lighten($bgcolor, $amount);
-    }
-
-    @return $text-color;
+    $prev-key: $key;
+    $prev-num: $num;
+  }
 }
 
-//
-// 레이어 이름으로부터 z-index 값을 가져온다.
-//
+// Starts at zero
+// Another grid mixin that ensures the min-width of the lowest breakpoint starts at 0.
+@mixin _assert-starts-at-zero($map) {
+  $values: map-values($map);
+  $first-value: nth($values, 1);
+  @if $first-value != 0 {
+    @warn "First breakpoint in `$grid-breakpoints` must start at 0, but starts at #{$first-value}.";
+  }
+}
 
-@function z-indexs($layer) {
-  @return map-get($z-indexes, $layer);
+// Color contrast
+@function color-yiq($color) {
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
+
+  $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+  @if ($yiq >= 150) {
+    @return $yiq-text-dark;
+  } @else {
+    @return $yiq-text-light;
+  }
+}
+
+// Retrieve color Sass maps
+@function color($key: "blue") {
+  @return map-get($colors, $key);
+}
+
+@function theme-color($key: "primary") {
+  @return map-get($theme-colors, $key);
+}
+
+@function gray($key: "100") {
+  @return map-get($grays, $key);
+}
+
+// Request a theme color level
+@function theme-color-level($color-name: "primary", $level: 0) {
+  $color: theme-color($color-name);
+  $color-base: if($level > 0, #000, #fff);
+  $level: abs($level);
+
+  @return mix($color-base, $color, $level * $theme-color-interval);
 }
