@@ -1,10 +1,9 @@
 .site-contents {
   position: relative;
-  max-width: 990px;
-  margin: 50px auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin: map-get($spacers, 5) auto;
 
-  @include clearfix();
+  @include make-container-max-widths();
 }

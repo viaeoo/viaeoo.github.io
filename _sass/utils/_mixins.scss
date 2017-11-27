@@ -43,6 +43,71 @@
 }
 
 //-----------------------------------------------------
+// MOUSE EVENT MIXIN EX) HOVER, FOCUS
+//-----------------------------------------------------
+
+@mixin hover {
+  // TODO: re-enable along with mq4-hover-shim
+//  @if $enable-hover-media-query {
+//    // See Media Queries Level 4: https://drafts.csswg.org/mediaqueries/#hover
+//    // Currently shimmed by https://github.com/twbs/mq4-hover-shim
+//    @media (hover: hover) {
+//      &:hover { @content }
+//    }
+//  }
+//  @else {
+    &:hover { @content; }
+//  }
+}
+
+
+@mixin hover-focus {
+  @if $enable-hover-media-query {
+    &:focus {
+      @content;
+    }
+    @include hover { @content; }
+  } @else {
+    &:focus,
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin plain-hover-focus {
+  @if $enable-hover-media-query {
+    &,
+    &:focus {
+      @content;
+    }
+    @include hover { @content; }
+  } @else {
+    &,
+    &:focus,
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin hover-focus-active {
+  @if $enable-hover-media-query {
+    &:focus,
+    &:active {
+      @content;
+    }
+    @include hover { @content; }
+  } @else {
+    &:focus,
+    &:active,
+    &:hover {
+      @content;
+    }
+  }
+}
+
+//-----------------------------------------------------
 // CONTAINER MIXIN
 //-----------------------------------------------------
 
@@ -109,6 +174,47 @@
 }
 
 //-----------------------------------------------------
+// BACKGROUN MIXIN
+//-----------------------------------------------------
+
+// Contextual backgrounds
+
+@mixin bg-variant($parent, $color) {
+  #{$parent} {
+    background-color: $color !important;
+  }
+  a#{$parent} {
+    @include hover-focus {
+      background-color: darken($color, 10%) !important;
+    }
+  }
+}
+
+@mixin bg-gradient-variant($parent, $color) {
+  #{$parent} {
+    background: $color linear-gradient(180deg, mix($body-bg, $color, 15%), $color) repeat-x !important;
+  }
+}
+
+@each $color, $value in $theme-colors {
+  @include bg-variant(".bg-#{$color}", $value);
+}
+
+@if $enable-gradients {
+  @each $color, $value in $theme-colors {
+    @include bg-gradient-variant(".bg-gradient-#{$color}", $value);
+  }
+}
+
+.bg-white {
+  background-color: $white !important;
+}
+
+.bg-transparent {
+  background-color: transparent !important;
+}
+
+//-----------------------------------------------------
 // TEXT MIXIN
 //-----------------------------------------------------
 
@@ -140,71 +246,6 @@
   a#{$parent} {
     @include hover-focus {
       color: darken($color, 10%) !important;
-    }
-  }
-}
-
-//-----------------------------------------------------
-// MOUSE EVENT MIXIN EX) HOVER, FOCUS
-//-----------------------------------------------------
-
-@mixin hover {
-  // TODO: re-enable along with mq4-hover-shim
-//  @if $enable-hover-media-query {
-//    // See Media Queries Level 4: https://drafts.csswg.org/mediaqueries/#hover
-//    // Currently shimmed by https://github.com/twbs/mq4-hover-shim
-//    @media (hover: hover) {
-//      &:hover { @content }
-//    }
-//  }
-//  @else {
-    &:hover { @content; }
-//  }
-}
-
-
-@mixin hover-focus {
-  @if $enable-hover-media-query {
-    &:focus {
-      @content;
-    }
-    @include hover { @content; }
-  } @else {
-    &:focus,
-    &:hover {
-      @content;
-    }
-  }
-}
-
-@mixin plain-hover-focus {
-  @if $enable-hover-media-query {
-    &,
-    &:focus {
-      @content;
-    }
-    @include hover { @content; }
-  } @else {
-    &,
-    &:focus,
-    &:hover {
-      @content;
-    }
-  }
-}
-
-@mixin hover-focus-active {
-  @if $enable-hover-media-query {
-    &:focus,
-    &:active {
-      @content;
-    }
-    @include hover { @content; }
-  } @else {
-    &:focus,
-    &:active,
-    &:hover {
-      @content;
     }
   }
 }

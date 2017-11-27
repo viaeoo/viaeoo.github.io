@@ -16,13 +16,16 @@
 
 //import components scss
 @import 'components/text';
+@import 'components/spacers';
+
+@import 'components/card';
+@import 'components/button';
 
 @import 'components/box';
 @import 'components/list';
 @import 'components/pagination';
-@import 'components/card';
+
 @import 'components/post';
-@import 'components/button';
 @import 'components/modal';
 @import 'components/form';
 @import 'components/badge';

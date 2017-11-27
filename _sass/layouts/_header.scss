@@ -3,6 +3,9 @@
   flex-wrap: wrap;
   background-color: $white;
   line-height: 2rem;
+  padding-top: map-get($spacers, 3);
+  padding-bottom: map-get($spacers, 3);
+  border-bottom: 1px solid $secondary;
  
   @include make-container();
 }
@@ -23,7 +26,7 @@
 
   li {
     display: inline-block;
-    font-size: 1rem;
+    font-size: 0.9rem;
 
     > a {
       padding: 0 0.3rem;
