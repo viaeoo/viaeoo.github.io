@@ -11,18 +11,23 @@
         var item = store[results[i].ref];
 
         appendString += 
-          '<li class="list-item">' +
+          '<div class="card">' +
             '<a href="' + item.url + '">' +
-              '<h3 class="list-title"><span class="color-primary">[' + item.category + ']</span> ' + item.title + '</h3>' +
-              '<p class="list-description">' + item.content + '</p>' +
-              '<time class="list-date" datatime="' + item.date + '"><i class="fa fa-clock-o space-right-sm" aria-hidden="true"></i>' + item.date + '</time>' +
+              '<h3 class="card-header bg-transparent"><span class="text-primary">[' + item.category + ']</span> ' + item.title + '</h3>' +
+              '<div class="card-body">' +
+                '<p class="card-text">' + item.content +'</p>' +
+                '<p class="card-text text-right">' + 
+                  '<time class="card-date" datatime="' + item.date + '"><i class="fa fa-clock-o mr-2" aria-hidden="true"></i>' + item.date + '</time>' +
+                '</p>' +
+              '</div>' +
             '</a>' +
-          '</li>';
+          '</div>';
+        console.log(appendString);
       }
 
       searchResults.innerHTML = appendString;
     } else {
-      searchResults.innerHTML = '<li class="list-item">No results found</li>';
+      searchResults.innerHTML = 'No results found';
     }
   }
 
