@@ -28,4 +28,20 @@ window.onload = () => {
 			searchElement.style.display = 'block';
 		}
 	}, false);
+
+	// category define
+	const categoryElement = document.querySelector('.js-category-list'); // category box
+	const categoryBtn = document.querySelector('.js-btn-category'); // category toggle button
+
+	if (categoryElement) {
+		categoryBtn.addEventListener('click', () => {
+			if (categoryElement.style.display === 'block') {
+				categoryElement.style.display = 'none';
+			} else {
+				categoryElement.style.display = 'block';
+			}
+		}, false);
+	} else {
+		// Todo
+	}
 };
