@@ -22,7 +22,6 @@
               '</div>' +
             '</a>' +
           '</div>';
-        console.log(appendString);
       }
 
       searchResults.innerHTML = appendString;
