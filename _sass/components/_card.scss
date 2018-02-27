@@ -18,18 +18,6 @@
     margin-left: 0;
   }
 
-  > .list-group:first-child {
-    .list-group-item:first-child {
-      @include border-top-radius($card-border-radius);
-    }
-  }
-
-  > .list-group:last-child {
-    .list-group-item:last-child {
-      @include border-bottom-radius($card-border-radius);
-    }
-  }
-
   + .card {
     margin-top: 1rem;
   }
@@ -43,6 +31,7 @@
 }
 
 .card-title {
+  color: theme-color("primary");
   margin-bottom: $card-spacer-y;
 }
 
@@ -51,8 +40,12 @@
   margin-bottom: 0;
 }
 
-.card-text:not(:last-child) {
-  margin-bottom: 1rem;
+.card-text {
+  line-height: $line-height-base;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
 }
 
 .card-date {
@@ -265,6 +258,10 @@
 .card-columns {
   .card {
     margin-bottom: $card-columns-margin;
+
+    + .card {
+      margin-top: 0;
+    }
   }
 
   @include media-breakpoint-up(sm) {

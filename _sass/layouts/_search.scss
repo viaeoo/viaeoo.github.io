@@ -1,3 +1,25 @@
 .site-search {
   display: none;
+  width: 100%;
+  position: absolute;
+  padding: map-get($spacers, 1) map-get($spacers, 3);
+  background-color: theme-color('secondary');
+  
+  .form {
+    display: flex;
+    margin: 0 auto;
+    max-width: map-get($grid-breakpoints, xl);
+  }
+
+  .form-control {
+    flex: auto;
+  }
+
+  label.form-control {
+    flex: 0;
+  }
+
+  .btn-search {
+    color: $white;
+  }
 }

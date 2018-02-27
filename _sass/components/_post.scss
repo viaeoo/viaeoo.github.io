@@ -1,0 +1,131 @@
+//
+// Base styles
+//
+
+.post {
+  flex: auto;
+  line-height: $line-height-lg;
+  margin-bottom: map-get($spacers, 4);
+
+  .post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: map-get($spacers, 3);
+  }
+}
+
+.post-container {
+  padding: map-get($spacers, 4);
+  border: $border-width solid rgba($black, .125);
+
+  @include border-radius($border-radius);
+
+  .post-title {
+    font-size: $font-size-lg;
+    margin-bottom: map-get($spacers, 2);
+  }
+
+  .post-header {
+    padding-bottom: map-get($spacers, 3);
+    border-bottom: $border-width dashed rgba($black, .125);
+  }
+
+  .post-contents {
+    word-break: break-all;
+    font-size: $font-size-base;
+    
+    h1 {
+      font-size: 1.8em;
+      margin: 0.95em 0 0.475em;
+    }
+    
+    h2 {
+      font-size: 1.7em;
+      margin: 0.9em 0 0.45em;
+    }
+    
+    h3 {
+      font-size: 1.5em;
+      margin: 0.8em 0 0.4em;
+    }
+    
+    h4 {
+      font-size: 1.3em;
+      margin: 0.8em 0 0.4em;
+    }
+    
+    h5 {
+      font-size: 1.1em;
+      margin: 0.6em 0 0.3em;
+    }
+    
+    h6 {
+      font-size: 1em;
+      margin: 0.6em 0 0.3em;
+    }
+    
+    p {
+      font-size: 0.95em;
+      padding: 0.7em 0;
+    }
+    
+    ul,
+    ol,
+    dl {
+      font-size: 0.95em;
+      line-height: 1.5em;
+      padding: 0.7em 0 0.7em 0.9em;
+    }
+    
+    ol {
+      list-style: decimal;
+      counter-reset: section;
+    }
+    
+    li {
+      position: relative;
+      padding-left: map-get($spacers, 3);
+    }
+    
+    ul > li {
+      &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0.3em;
+        height: 0.3em;
+        border-radius: 50%;
+        background: $black;
+        transform: translateY(0.5em);
+      }
+    }
+    
+    ol > li {
+      &::before{
+        content: counter(section)'.';
+        counter-increment: section;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      
+      &:nth-child(n + 10):before {
+        content: counter(section);
+      }
+    }
+    
+    img {
+      max-width: 100%;
+    }
+    
+    a {
+      color: $link-color;
+    }
+  }
+}
+
+.related {
+  flex: auto;
+  width: 100%;
+}

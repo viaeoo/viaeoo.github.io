@@ -1,11 +1,15 @@
 .highlight{
-    
+    width: 100%;
     background-color: #272822;
-    padding: 20px;
+    padding: 1rem;
     box-sizing: border-box;
-    border-radius: 10px;
+    border-radius: 0.5rem;
     font-size: 0.9em;
     line-height: 1.3em;
+
+    > .highlight {
+        padding: 0 !important;
+    }
 
     code { display: block; white-space: pre; overflow-x: auto; word-wrap: normal; color: #fff }
     .hll { background-color: #272822; }

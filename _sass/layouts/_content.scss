@@ -4,6 +4,5 @@
   flex-wrap: wrap;
   justify-content: space-between;
   margin: map-get($spacers, 5) auto;
-
-  @include make-container-max-widths();
+  max-width: map-get($grid-breakpoints, xl);
 }
