@@ -17,6 +17,13 @@
 
   label.form-control {
     flex: 0;
+
+    > select {
+      &::-ms-expand {
+        background-color: transparent;
+        border: 0;
+      }
+    }
   }
 
   .btn-search {

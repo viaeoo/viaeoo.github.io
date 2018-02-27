@@ -11,14 +11,6 @@
     display: none;
   }
 
-  > .btn-category {
-    &:hover {
-      ~ .list {
-        display: block;
-      }
-    }
-  }
-
   > .list {
     display: none;
     position: relative;
