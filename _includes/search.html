@@ -1,7 +1,7 @@
-<div class="site-search">
+<div class="site-search js-site-search">
   <h2 class="none">Search</h2>
-  <form action="/search/" method="get" class="form-group">
-    <label class="form-select form-select-sm">
+  <form action="/search/" method="get" class="form">
+    <label class="form-control form-control-sm mr-2">
       <select name="sort" class="js-form-search-select">
         <option value="all">All</option>
         <option value="title">Title</option>
@@ -9,7 +9,7 @@
         <option value="tag">Tag</option>
       </select>
     </label>
-    <input type="search" name="value" class="form-input form-input-sm js-form-search-input" placeholder="검색어를 입력하세요." required>
+    <input type="search" name="value" class="form-control form-control-sm js-form-search-input" placeholder="검색어를 입력하세요." required>
     <button type="submit" class="btn btn-sm btn-search">검색하기</button>
   </form>
 </div>

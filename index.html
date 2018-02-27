@@ -8,12 +8,10 @@ title: HOME
     <h2 class="box-title"><i class="fa fa-list mr-2" aria-hidden="true"></i>POST LIST</h2>
     <a href="/blog" class="btn btn-sm btn-secondary-outline btn-more">MORE<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></a>
     {% assign postTotalCount = site.posts | size %}
-    {% if postTotalCount > site.homePostListLimit %}
-    {% endif %}
     {% for post in site.posts limit: site.homePostListLimit %}
     <div class="card">
       <a href="{{ post.url }}">
-        <h3 class="card-header bg-transparent"><span class="text-cyan">[{{ post.categories }}]</span> {{ post.title }}</h3>
+        <h3 class="card-header bg-transparent"><span class="text-primary">[{{ post.categories }}]</span> {{ post.title }}</h3>
         <div class="card-body">
             <p class="card-text">
               {{ post.content | strip_html | strip | truncatewords: 100 }}

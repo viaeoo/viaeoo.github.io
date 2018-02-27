@@ -3,51 +3,49 @@ layout: default
 ---
 <main class="site-contents">
   <!-- post -->
-  <section class="box">
-    <h2 class="box-title"><i class="fa fa-pencil space-right" aria-hidden="true"></i>POST</h2>
-    <!-- post container -->
-    <article class="post">
-      <!-- post header -->
+  <section class="box post">
+    <h2 class="box-title"><i class="fa fa-pencil mr-2" aria-hidden="true"></i>POST</h2>
+    <!-- post contents -->
+    <article class="post-container">
+      <h3 class="post-title"><a href="{{ page.url }}">{{ page.title }}</a></h3>
       <header class="post-header">
-        <h3 class="post-title"><a href="{{ page.url }}">{{ page.title }}</a></h3>
+        <p><strong><i class="fa fa-folder-open mr-2" aria-hidden="true"></i>Category</strong> {{ page.categories | first }}</p>
         {% assign tagCount = page.tags | size %}
         {% if tagCount > 0 %}
-        <p class="post-tag">
-          <strong class="space-right"><i class="fa fa-tags space-right-sm" aria-hidden="true"></i>Tag</strong>
+        <p>
+          <strong><i class="fa fa-tags mr-2" aria-hidden="true"></i>Tag</strong>
           {% for tag in page.tags %}
           <span class="tag">{{ tag }}</span>
           {% endfor %}
         </p>
         {% endif %}
-        <strong class="post-category"><i class="fa fa-folder-open space-right" aria-hidden="true"></i>{{ page.categories | first }}</strong>
-        <time class="post-date" datatime="{{ page.date | date: "%Y-%m-%d" }}"><strong class="space-right"><i class="fa fa-clock-o space-right-sm" aria-hidden="true"></i>Date</strong>{{ page.date | date: "%Y-%m-%d" }}</time>
+        <time datatime="{{ page.date | date: "%Y-%m-%d" }}"><strong><i class="fa fa-clock-o mr-2" aria-hidden="true"></i>Date</strong> {{ page.date | date: "%Y-%m-%d" }}</time>
       </header>
-      <!-- post contents -->
-      <div class="post-contents">
+      <section class="post-contents">
         {{ content }}
-      </div>
+      </section>
     </article>
     <!-- post navigation -->
     <div class="post-nav">
       {% if page.previous.url %}
-      <a href="{{ page.previous.url }}" class="btn btn-secondary btn-float-left"><i class="fa fa-chevron-left space-right" aria-hidden="true"></i><strong class="none">{{ page.previous.categories | first }} - {{ page.previous.title }}</strong></a>
+      <a href="{{ page.previous.url }}" class="btn btn-secondary"><i class="fa fa-chevron-left" aria-hidden="true"></i><strong class="none">{{ page.previous.categories | first }} - {{ page.previous.title }}</strong></a>
       {% endif %}
       {% if page.next.url %}
-      <a href="{{ page.next.url }}" class="btn btn-secondary btn-float-right"><strong class="none">{{ page.next.categories | first }} - {{ page.next.title }}</strong><i class="fa fa-chevron-right space-left" aria-hidden="true"></i></a>
+      <a href="{{ page.next.url }}" class="btn btn-secondary"><strong class="none">{{ page.next.categories | first }} - {{ page.next.title }}</strong><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
       {% endif %}
     </div>
   </section>
 
   <!-- Related Posts -->
-  <section class="box space-top-lg">
-    <h2 class="box-title"><i class="fa fa-filter space-right" aria-hidden="true"></i>RELATED POSTS</h2>
+  <section class="box related">
+    <h2 class="box-title"><i class="fa fa-filter mr-2" aria-hidden="true"></i>RELATED POSTS</h2>
     <ul class="list list-table">
       {% for post in site.posts %}
       {% if post.categories == page.categories %}
       <li class="list-item">
         <a href="{{ post.url }}">
-          <h3 class="list-title">{{ post.title }}</h3>
-          <time class="list-date" datatime="{{ post.date | date: "%Y-%m-%d" }}"><i class="fa fa-clock-o space-right-sm" aria-hidden="true"></i>{{ post.date | date: "%Y-%m-%d" }}</time>
+          <h3>{{ post.title }}</h3>
+          <time class="text-muted" datatime="{{ post.date | date: "%Y-%m-%d" }}"><i class="fa fa-clock-o mr-2" aria-hidden="true"></i>{{ post.date | date: "%Y-%m-%d" }}</time>
         </a>
       </li>
       {% endif %}

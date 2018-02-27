@@ -4,43 +4,51 @@ title: BLOG
 ---
 <main class="site-contents">
   <!-- post -->
-  <section class="box box-post">
-    <h2 class="box-title"><i class="fa fa-list space-right" aria-hidden="true"></i>POST LIST</h2>
+  <section class="box">
+    <h2 class="box-title"><i class="fa fa-list mr-2" aria-hidden="true"></i>POST LIST</h2>
     <!-- post list -->
-    <ul class="list">
-      {% for post in paginator.posts %}
-      <li class="list-item">
-        <a href="{{ post.url }}">
-          <h3 class="list-title"><span class="color-primary">[{{ post.categories }}]</span> {{ post.title }}</h3>
-          <p class="list-description">
+    {% for post in paginator.posts %}
+    <div class="card">
+      <a href="{{ post.url }}">
+        <h3 class="card-header bg-transparent"><span class="text-primary">[{{ post.categories }}]</span> {{ post.title }}</h3>
+        <div class="card-body">
+          <p class="card-text">
             {{ post.content | strip_html | strip | truncatewords: 50 }}
           </p>
-          <time class="list-date" datatime="{{ post.date | date: "%Y-%m-%d" }}"><i class="fa fa-clock-o space-right-sm" aria-hidden="true"></i>{{ post.date | date: "%Y-%m-%d" }}</time>
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
+          <p class="card-text text-right">
+            <time class="card-date" datatime="{{ post.date | date: "%Y-%m-%d" }}"><i class="fa fa-clock-o mr-2" aria-hidden="true"></i>{{ post.date | date: "%Y-%m-%d" }}</time>
+          </p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
     <!-- post pagination -->
     {% if paginator.total_pages > 1 %}
-    <div class="pagination">  
+    <ul class="pagination">  
       {% if paginator.previous_page %}
-      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="btn btn-sm btn-secondary btn-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+      <li class="page-item">
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="page-link"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+      </li>
       {% endif %}
 
       {% for page in (1..paginator.total_pages) %}
-        {% if page == paginator.page %}
-        <span class="btn btn-sm btn-primary active">{{ page }}</span>
-        {% elsif page == 1 %}
-        <a href="{{ site.baseurl | replace: '//', '/' }}blog" class="btn btn-sm btn-secondary">{{ page }}</a>
-        {% else %}
-        <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}" class="btn btn-sm btn-secondary">{{ page }}</a>
-        {% endif %}
+        <li class="page-item">
+          {% if page == paginator.page %}
+          <span class="page-link active">{{ page }}</span>
+          {% elsif page == 1 %}
+          <a href="{{ site.baseurl | replace: '//', '/' }}blog" class="page-link">{{ page }}</a>
+          {% else %}
+          <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}" class="page-link">{{ page }}</a>
+          {% endif %}
+        </li>
       {% endfor %}
 
       {% if paginator.next_page %}
-      <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="btn btn-sm btn-secondary btn-next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+      <li class="page-item">
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="page-link"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+      </li>
       {% endif %}    
-    </div>
+    </ul>
     {% endif %}
   </section>
 
