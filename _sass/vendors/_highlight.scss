@@ -6,9 +6,11 @@
     border-radius: 0.5rem;
     font-size: 0.9em;
     line-height: 1.3em;
+    margin: 0.9rem 0;
 
     > .highlight {
         padding: 0 !important;
+        margin: 0 !important;
     }
 
     code { display: block; white-space: pre; overflow-x: auto; word-wrap: normal; color: #fff }
