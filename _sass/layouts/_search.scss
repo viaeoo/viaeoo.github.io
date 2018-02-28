@@ -19,10 +19,8 @@
     flex: 0;
 
     > select {
-      &::-ms-expand {
-        background-color: transparent;
-        border: 0;
-      }
+      background-color: transparent;
+      border: 0;
     }
   }
 
