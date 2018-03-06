@@ -59,11 +59,12 @@ window.onload = () => {
 	(function() {
 		// highlight define
 		const highlightElements = document.querySelectorAll('.highlighter-rouge'); // highlight elements
+		const contentsElements = document.querySelector('.site-contents');
 
 		// resize fun
 		function higlightResize() {
 			highlightElements.forEach((highlight, index) => {
-				highlight.style.width = 'calc(' + document.body.clientWidth + 'px' + ' - 5rem)';
+				highlight.style.width = 'calc(' + contentsElements.clientWidth + 'px' + ' - 5rem)';
 			});
 		}
 		
