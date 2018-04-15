@@ -36,7 +36,7 @@ title: BLOG
           {% if page == paginator.page %}
           <span class="page-link active">{{ page }}</span>
           {% elsif page == 1 %}
-          <a href="{{ site.baseurl | replace: '//', '/' }}blog" class="page-link">{{ page }}</a>
+          <a href="/blog" class="page-link">{{ page }}</a>
           {% else %}
           <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}" class="page-link">{{ page }}</a>
           {% endif %}

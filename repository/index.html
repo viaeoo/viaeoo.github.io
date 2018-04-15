@@ -7,7 +7,7 @@ title: REPOSITORY
   <section class="box">
     <h2 class="box-title"><i class="fa fa-database mr-2" aria-hidden="true"></i>REPOSITORY LIST</h2>
     <div class="card-columns">
-      {% assign sortedRepository = site.github.public_repositories | sort: "updated_at" | reverse %}
+      {% assign sortedRepository = site.github.public_repositories | sort: "pushed_at" | reverse %}
       {% for repository in sortedRepository %}
       <div class="card">
         <a href="{{ repository.html_url }}" target="_blank" class="card-body text-center">
@@ -18,7 +18,7 @@ title: REPOSITORY
             <span><i class="fa fa-code-fork mr-2" aria-hidden="true"></i>{{ repository.forks_count }}</span>
           </p>
           <p class="card-text text-muted">
-            <time datatime="{{ repository.updated_at | date: "%Y-%m-%d" }}"><i class="fa fa-clock-o mr-2" aria-hidden="true"></i>{{ repository.updated_at | date: "%Y-%m-%d" }}</time>
+            <time datatime="{{ repository.updated_at | date: "%Y-%m-%d" }}"><i class="fa fa-clock-o mr-2" aria-hidden="true"></i>{{ repository.pushed_at | date: "%Y-%m-%d" }}</time>
           </p>
         </a>
       </div>

@@ -1,16 +1,16 @@
 <!-- category -->
 <section class="box category">
-    <!-- responsive button -->
-    <h2 class="box-title"><i class="fa fa-folder mr-2" aria-hidden="true"></i>CATEGRORY</h2>
-    <button type="button" class="btn btn-sm btn-secondary btn-category js-btn-category">CATEGRORY</button>
-    <ul class="list js-category-list">
-      {% for category in site.categories %}
-      <li class="list-item">
-          <a href="/search/?sort=category&amp;value={{ category | first }}">
-            <strong><i class="fa fa-caret-right mr-2" aria-hidden="true"></i>{{ category | first }}</strong>
-            <span class="text-muted">({{ category[1].size }})</span>
-          </a>
-      </li>
-      {% endfor %}
-    </ul>
-  </section>
+  <!-- responsive button -->
+  <h2 class="box-title"><i class="fa fa-folder mr-2" aria-hidden="true"></i>CATEGRORY</h2>
+  <button type="button" class="btn btn-sm btn-secondary btn-category js-btn-category">CATEGRORY</button>
+  <ul class="list js-category-list">
+    {% for category in site.categories %}
+    <li class="list-item">
+        <a href="/search/?sort=category&amp;value={{ category | first }}">
+          <strong><i class="fa fa-caret-right mr-2" aria-hidden="true"></i>{{ category | first }}</strong>
+          <span class="text-muted">({{ category[1].size }})</span>
+        </a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

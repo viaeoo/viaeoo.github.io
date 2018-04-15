@@ -1,0 +1,28 @@
+---
+layout: default
+title: REPOSITORY
+---
+<main class="site-contents">
+  <!-- project -->
+  <section class="box">
+    <h2 class="box-title"><i class="fa fa-th mr-2" aria-hidden="true"></i>PROJECT LIST</h2>
+    <div class="card-columns">
+      {% assign sortedProject = site.data.projects | sort: "startDate" | reverse %}
+      {% for project in sortedProject %}
+      <div class="card">
+        <a href="{{ project.href }}" target="_blank">
+          <img class="card-img-top" src="{{ project.thumbnail }}" alt="Card image cap">
+        </a>
+        <div class="card-body">
+          <h3 class="card-title">[{{ project.type | upcase }}] {{ project.title }}</h3>
+          <p class="card-text">{{ project.explain | strip | truncatewords: 50 }}</p>
+          <p class="card-text text-muted">
+            <time datatime="{{ project.startDate | date: "%Y-%m-%d" }}">{{ project.startDate | date: "%Y-%m-%d" }}</time> ~ 
+            <time datatime="{{ project.endDate | date: "%Y-%m-%d" }}">{{ project.endDate | date: "%Y-%m-%d" }}</time>
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+</main>

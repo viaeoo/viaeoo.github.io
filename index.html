@@ -13,12 +13,12 @@ title: HOME
       <a href="{{ post.url }}">
         <h3 class="card-header bg-transparent"><span class="text-primary">[{{ post.categories }}]</span> {{ post.title }}</h3>
         <div class="card-body">
-            <p class="card-text">
-              {{ post.content | strip_html | strip | truncatewords: 100 }}
-            </p>
-            <p class="card-text text-right">
-              <time class="card-date" datatime="{{ post.date | date: "%Y-%m-%d" }}"><i class="fa fa-clock-o mr-2" aria-hidden="true"></i>{{ post.date | date: "%Y-%m-%d" }}</time>
-            </p>
+          <p class="card-text">
+            {{ post.content | strip_html | strip | truncatewords: 100 }}
+          </p>
+          <p class="card-text text-right">
+            <time class="card-date" datatime="{{ post.date | date: "%Y-%m-%d" }}"><i class="fa fa-clock-o mr-2" aria-hidden="true"></i>{{ post.date | date: "%Y-%m-%d" }}</time>
+          </p>
         </div>
       </a>
     </div>

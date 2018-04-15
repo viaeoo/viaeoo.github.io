@@ -129,6 +129,8 @@
 // Card image caps
 .card-img-top {
   width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+  border-bottom: $card-border-width solid $card-border-color;
+
   @include border-top-radius($card-inner-border-radius);
 }
 
@@ -265,12 +267,17 @@
   }
 
   @include media-breakpoint-up(sm) {
-    column-count: $card-columns-count;
-    column-gap: $card-columns-gap;
+    font-size: 0;
 
     .card {
-      display: inline-block; // Don't let them vertically span multiple columns
-      width: 100%; // Don't let their width change
+      display: inline-block;
+      width: calc(33.33% - 24px);
+      font-size: $font-size-base;
+      vertical-align: top;
+
+      &:nth-child(3n - 1) {
+        margin: 0 12px;
+      }
     }
   }
 }

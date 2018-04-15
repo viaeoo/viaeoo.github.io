@@ -1,13 +1,18 @@
 .site-header {
-  display: flex;
-  flex-wrap: wrap;
   background-color: $white;
   line-height: 2rem;
   padding-top: map-get($spacers, 3);
   padding-bottom: map-get($spacers, 3);
   border-bottom: 1px solid $secondary;
- 
-  @include make-container();
+  
+  .header-inner {
+    padding-right: ($grid-gutter-width / 2);
+    padding-left: ($grid-gutter-width / 2);
+    max-width: map-get($grid-breakpoints, xl);
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 
 .site-title {

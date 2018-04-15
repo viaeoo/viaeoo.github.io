@@ -1,0 +1,44 @@
+-
+  type: 'web'
+  title: 'Stoneislet Entertainment'
+  explain: 'Stoneislet Entertainment 브랜드 사이트 Front-end 개발'
+  startDate: '2014-07-14'
+  endDate: '2014-08-23'
+  thumbnail: '/assets/img/projects/thumb-stone.jpg'
+  href: '#'
+
+-
+  type: 'web'
+  title: 'Colinicol'
+  explain: 'Colinicol 국내 쇼핑몰 Front-end 개발'
+  startDate: '2014-09-21'
+  endDate: '2014-10-24'
+  thumbnail: '/assets/img/projects/thumb-colinicol.jpg'
+  href: '#'
+
+-
+  type: 'web'
+  title: 'Hiskinkorea'
+  explain: 'Hiskinkorea 해외 쇼핑몰 Front-end 개발'
+  startDate: '2015-05-18'
+  endDate: '2015-07-19'
+  thumbnail: '/assets/img/projects/thumb-hiskin.jpg'
+  href: '#'
+
+-
+  type: 'web'
+  title: 'A.N.T COS'
+  explain: 'A.N.T COS 해외 쇼핑몰 Front-end 개발'
+  startDate: '2015-07-27'
+  endDate: '2015-09-16'
+  thumbnail: '/assets/img/projects/thumb-ant.jpg'
+  href: '#'
+
+-
+  type: 'web'
+  title: 'PUSKINKOREA'
+  explain: 'PUSKINKOREA 브랜드 사이트 Front, Back 개발'
+  startDate: '2016-05-25'
+  endDate: '2016-07-22'
+  thumbnail: '/assets/img/projects/thumb-puskin.jpg'
+  href: '#'

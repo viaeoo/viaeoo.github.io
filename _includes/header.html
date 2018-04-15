@@ -1,26 +1,28 @@
 <header class="site-header">
-  <!-- title -->
-  <h1 class="site-title">
-    <a href="/">{{site.title}}</a>
-  </h1>
-  <!-- nav btn-->
-  <button type="button" class="btn btn-sm btn-secondary btn-nav js-btn-nav-open" title="Navigation">
-    <i class="fa fa-bars" aria-hidden="true"></i>
-  </button>
-  <!-- navigation -->
-  <nav class="site-nav js-site-nav">
-    <h2 class="none">Navigation</h2>
-    <ul>
-      {% for nav in site.nav %}
-      <li><a href="{{nav.href}}">{{nav.title}}</a></li>
-      {% endfor %}
-    </ul>
-    <button type="button" class="btn btn-lg btn-primary-outline btn-close js-btn-nav-close">
-      <i class="fa fa-times" aria-hidden="true"></i>
+  <div class="header-inner">
+    <!-- title -->
+    <h1 class="site-title">
+      <a href="/">{{site.title}}</a>
+    </h1>
+    <!-- nav btn-->
+    <button type="button" class="btn btn-sm btn-secondary btn-nav js-btn-nav-open" title="Navigation">
+      <i class="fa fa-bars" aria-hidden="true"></i>
     </button>
-  </nav>
-  <!-- search btn -->
-  <button type="button" class="btn btn-sm btn-secondary btn-search js-btn-search">
-    <i class="fa fa-search" aria-hidden="true"></i>
-  </button>
+    <!-- navigation -->
+    <nav class="site-nav js-site-nav">
+      <h2 class="none">Navigation</h2>
+      <ul>
+        {% for nav in site.nav %}
+        <li><a href="{{nav.href}}">{{nav.title}}</a></li>
+        {% endfor %}
+      </ul>
+      <button type="button" class="btn btn-lg btn-primary-outline btn-close js-btn-nav-close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
+    </nav>
+    <!-- search btn -->
+    <button type="button" class="btn btn-sm btn-secondary btn-search js-btn-search">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+  </div>
 </header>
