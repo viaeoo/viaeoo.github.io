@@ -5,7 +5,8 @@
   startDate: '2014-07-14'
   endDate: '2014-08-23'
   thumbnail: '/assets/img/projects/thumb-stone.jpg'
-  href: '#'
+  url: '#'
+  detail: '#'
 
 -
   type: 'web'
@@ -14,7 +15,8 @@
   startDate: '2014-09-21'
   endDate: '2014-10-24'
   thumbnail: '/assets/img/projects/thumb-colinicol.jpg'
-  href: '#'
+  url: '#'
+  detail: '#'
 
 -
   type: 'web'
@@ -23,7 +25,8 @@
   startDate: '2015-05-18'
   endDate: '2015-07-19'
   thumbnail: '/assets/img/projects/thumb-hiskin.jpg'
-  href: '#'
+  url: '#'
+  detail: '#'
 
 -
   type: 'web'
@@ -32,7 +35,8 @@
   startDate: '2015-07-27'
   endDate: '2015-09-16'
   thumbnail: '/assets/img/projects/thumb-ant.jpg'
-  href: '#'
+  url: 'http://www.antcosmall.com/'
+  detail: '#'
 
 -
   type: 'web'
@@ -41,4 +45,5 @@
   startDate: '2016-05-25'
   endDate: '2016-07-22'
   thumbnail: '/assets/img/projects/thumb-puskin.jpg'
-  href: '#'
+  url: 'http://www.puskinkorea.co.kr'
+  detail: '#'
