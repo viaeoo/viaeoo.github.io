@@ -1,6 +1,17 @@
 'use strict';
 
 window.onload = () => {
+	// add class
+	function addClass(element, className) {
+		element.className += " " + className;
+	}
+
+	// remove class
+	function removeClass(element, className) {
+		var check = new RegExp("(\\s|^)" + className + "(\\s|$)");
+		element.className = element.className.replace(check, " ").trim();
+	}
+
 	// navigation event
 	(function() {
 		// navigation define
@@ -65,6 +76,36 @@ window.onload = () => {
 			});
 		} else {
 			// Todo
+		}
+	}());
+
+	// project tab event
+	(function() {
+		// tab define
+		var tabBtns = document.querySelectorAll('.js-tab-btn .btn'); // tab button
+		var tabContents = document.querySelectorAll('.js-tab-content'); // tab content
+
+		// tab event bind
+		if (tabBtns) {
+			tabBtns.forEach(function(tabBtn, index) {
+				tabBtn.addEventListener('click', function(e) {
+					// default event
+					e.preventDefault();
+					if (!this.className.match(/\bactive\b/)) {
+						var category = e.target.attributes['data-tab'].value;
+						// tab class
+						addClass(this, 'active');
+						removeClass(tabBtns[index ? 0 : 1], 'active');
+						// tab content show & hide event
+						tabContents[index ? 0 : 1].style.display = 'none';
+						tabContents[index].style.display = 'block';
+					} else {
+						// todo
+					}
+				}, false);
+			});
+		} else {
+			// todo
 		}
 	}());
 

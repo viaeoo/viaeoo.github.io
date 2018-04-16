@@ -6,26 +6,56 @@ title: REPOSITORY
   <!-- project -->
   <section class="box">
     <h2 class="box-title"><i class="fa fa-th mr-2" aria-hidden="true"></i>PROJECT LIST</h2>
-    <div class="card-columns">
+    <ul class="btn-tab js-tab-btn">
+      <li><a href="#" class="btn btn-sm active" data-tab="personal">개인</a></li>
+      <li><a href="#" class="btn btn-sm" data-tab="company">회사</a></li>
+    </ul>
+    <div class="card-columns js-tab-content" data-content="personal">
       {% assign sortedProject = site.data.projects | sort: "startDate" | reverse %}
       {% for project in sortedProject %}
+      {% if project.category == "personal" %}
       <div class="card">
         <img class="card-img-top" src="{{ project.thumbnail }}" alt="Card image cap">
         <div class="card-body">
-          <h3 class="card-title">[{{ project.type | upcase }}] {{ project.title }}</h3>
+          <h3 class="card-title text-gray-dark">[{{ project.type | upcase }}] {{ project.title }}</h3>
           <p class="card-text">{{ project.explain | strip | truncatewords: 50 }}</p>
           <p class="card-text text-muted">
             <time datatime="{{ project.startDate | date: "%Y-%m-%d" }}">{{ project.startDate | date: "%Y-%m-%d" }}</time> ~ 
             <time datatime="{{ project.endDate | date: "%Y-%m-%d" }}">{{ project.endDate | date: "%Y-%m-%d" }}</time>
           </p>
           {% if project.url == "#" %}
-          <a href="{{ project.url }}" class="btn btn-danger" onClick="alert('운영이 종료된 프로젝트입니다.'); return false;"><i class="fa fa-unlink mr-2" aria-hidden="true"></i>URL</a>
+          <a href="{{ project.url }}" class="btn btn-outline-danger" onClick="alert('운영이 종료된 프로젝트입니다.'); return false;"><i class="fa fa-unlink" aria-hidden="true"></i></a>
           {% else %}
-          <a href="{{ project.url }}" target="_blank" class="btn btn-primary"><i class="fa fa-link mr-2" aria-hidden="true"></i>URL</a>
+          <a href="{{ project.url }}" target="_blank" class="btn btn-outline-primary"><i class="fa fa-link" aria-hidden="true"></i></a>
           {% endif %}
-          <a href="{{ project.detail }}" target="_blank" class="btn btn-primary"><i class="fa fa-cloud mr-2" aria-hidden="true"></i>DETAIL</a>
+          <a href="{{ project.detail }}" target="_blank" class="btn btn-outline-primary"><i class="fa fa-search-plus mr-2" aria-hidden="true"></i>자세히보기</a>
         </div>
       </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <div class="card-columns js-tab-content" data-content="company" style="display: none;">
+      {% assign sortedProject = site.data.projects | sort: "startDate" | reverse %}
+      {% for project in sortedProject %}
+      {% if project.category == "company" %}
+      <div class="card">
+        <img class="card-img-top" src="{{ project.thumbnail }}" alt="Card image cap">
+        <div class="card-body">
+          <h3 class="card-title text-gray-dark">[{{ project.type | upcase }}] {{ project.title }}</h3>
+          <p class="card-text">{{ project.explain | strip | truncatewords: 50 }}</p>
+          <p class="card-text text-muted">
+            <time datatime="{{ project.startDate | date: "%Y-%m-%d" }}">{{ project.startDate | date: "%Y-%m-%d" }}</time> ~ 
+            <time datatime="{{ project.endDate | date: "%Y-%m-%d" }}">{{ project.endDate | date: "%Y-%m-%d" }}</time>
+          </p>
+          {% if project.url == "#" %}
+          <a href="{{ project.url }}" class="btn btn-outline-danger" onClick="alert('운영이 종료된 프로젝트입니다.'); return false;"><i class="fa fa-unlink" aria-hidden="true"></i></a>
+          {% else %}
+          <a href="{{ project.url }}" target="_blank" class="btn btn-outline-primary"><i class="fa fa-link" aria-hidden="true"></i></a>
+          {% endif %}
+          <a href="{{ project.detail }}" target="_blank" class="btn btn-outline-primary"><i class="fa fa-search-plus mr-2" aria-hidden="true"></i>자세히보기</a>
+        </div>
+      </div>
+      {% endif %}
       {% endfor %}
     </div>
   </section>

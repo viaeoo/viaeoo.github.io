@@ -259,7 +259,13 @@
 //
 
 .card-columns {
+  font-size: 0;
+
   .card {
+    width: 100%;
+    display: inline-block;
+    font-size: $font-size-base;
+    vertical-align: top;
     margin-bottom: $card-columns-margin;
 
     + .card {
@@ -267,17 +273,37 @@
     }
   }
 
-  @include media-breakpoint-up(sm) {
-    font-size: 0;
+  @include media-breakpoint-between(sm, sm) {
+    .card {
+      width: calc(50% - 6px);
 
+      &:nth-child(odd) {
+        margin-right: 12px;
+      }
+    }
+  }
+
+  @include media-breakpoint-between(md, md) {
+    .card {
+      width: calc(33.33% - 8px);
+      margin-right: 12px; 
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
     .card {
       display: inline-block;
-      width: calc(33.33% - 24px);
+      width: calc(25% - 9px);
       font-size: $font-size-base;
       vertical-align: top;
+      margin-right: 12px; 
 
-      &:nth-child(3n - 1) {
-        margin: 0 12px;
+      &:nth-child(4n) {
+        margin-right: 0;
       }
     }
   }
