@@ -2,10 +2,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1" >
-  <meta name="title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
-  <meta name="description" content="{% if page.contens %}{{ post.content | strip_html | strip | truncatewords: 20 }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="title" content="{% if page.title %}{{ site.description | strip_html | strip }} - {{ page.title | strip_html | strip }}{% else %}{{ site.title | strip_html | strip }}{% endif %}">
+  <meta name="description" content="{% if page.content %}{{ content | strip_html | strip | truncatewords: 20 }}{% else %}{{ site.description }}{% endif %}">
   <meta naem="author" content="{{ site.author }}">
-  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <title>{% if page.title %}{{ site.description | strip_html | strip }} - {{ page.title | strip_html | strip }}{% else %}{{ site.title | strip_html | strip }}{% endif %}</title>
   <!-- link -->
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="alternate" type="application/rss+xml" title="{{site.title}}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />

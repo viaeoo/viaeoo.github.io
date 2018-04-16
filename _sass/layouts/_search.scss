@@ -6,9 +6,11 @@
   background-color: theme-color('secondary');
   
   .form {
+    position: relative;
     display: flex;
     margin: 0 auto;
     max-width: map-get($grid-breakpoints, xl);
+    z-index: 2;
   }
 
   .form-control {

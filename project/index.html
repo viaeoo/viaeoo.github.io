@@ -18,12 +18,12 @@ title: REPOSITORY
             <time datatime="{{ project.startDate | date: "%Y-%m-%d" }}">{{ project.startDate | date: "%Y-%m-%d" }}</time> ~ 
             <time datatime="{{ project.endDate | date: "%Y-%m-%d" }}">{{ project.endDate | date: "%Y-%m-%d" }}</time>
           </p>
-          {% if product.url == "#" %}
-          <a href="{{ project.url }}" class="btn btn-danger" (onClick)="alert('운영이 종료되었습니다.');"><i class="fa fa-unlink mr-2" aria-hidden="true"></i>URL</a>
+          {% if project.url == "#" %}
+          <a href="{{ project.url }}" class="btn btn-danger" onClick="alert('운영이 종료된 프로젝트입니다.'); return false;"><i class="fa fa-unlink mr-2" aria-hidden="true"></i>URL</a>
           {% else %}
-          <a href="{{ project.url }}" class="btn btn-primary"><i class="fa fa-link mr-2" aria-hidden="true"></i>URL</a>
+          <a href="{{ project.url }}" target="_blank" class="btn btn-primary"><i class="fa fa-link mr-2" aria-hidden="true"></i>URL</a>
           {% endif %}
-          <a href="{{ project.detail }}" class="btn btn-primary"><i class="fa fa-cloud mr-2" aria-hidden="true"></i>DETAIL</a>
+          <a href="{{ project.detail }}" target="_blank" class="btn btn-primary"><i class="fa fa-cloud mr-2" aria-hidden="true"></i>DETAIL</a>
         </div>
       </div>
       {% endfor %}

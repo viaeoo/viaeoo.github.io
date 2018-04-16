@@ -7,6 +7,10 @@
   right: 0;
   text-align: right;
 
+  .background {
+    display: none;
+  }
+
   > .box-title {
     display: none;
   }
@@ -19,6 +23,7 @@
     border: 1px solid theme-color('secondary');
     margin-top: map-get($spacers, 2);
     padding: map-get($spacers, 2) 0;
+    z-index: 1;
 
     &::before {
       content: '';

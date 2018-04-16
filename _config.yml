@@ -74,9 +74,6 @@ plugins:
   - jekyll-babel
   - rouge
 
-# babel
-babel_js_extensions: 'js, es6, babel, jsx'
-
 # sass
 sass:
   sass_dir: _sass
